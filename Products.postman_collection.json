@@ -1,0 +1,396 @@
+{
+	"info": {
+		"_postman_id": "cc5da9b9-f9ec-4c17-863f-52d3edb87358",
+		"name": "Products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39671022"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.products[2].category).to.eql(\"beauty\");\r",
+							"    \r",
+							"});\r",
+							"\r",
+							"// Fonction pour vérifier la structure de l'objet\r",
+							"function checkStructure(obj, template) {\r",
+							"    for (var key in template) {\r",
+							"        if (!(key in obj)) {\r",
+							"            return false;\r",
+							"        }\r",
+							"        if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {\r",
+							"            if (!checkStructure(obj[key], template[key])) {\r",
+							"                return false;\r",
+							"            }\r",
+							"        }\r",
+							"    }\r",
+							"    return true;\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Vérifier que la structure de la réponse est conforme à l'exemple de la documentation\", function () {\r",
+							"    // Définir l'exemple de réponse de la documentation\r",
+							"    var expectedResponse = {\r",
+							"    \"products\": [\r",
+							"        {\r",
+							"            \"id\": 0,\r",
+							"            \"title\": \"\",\r",
+							"            \"description\": \"\",\r",
+							"            \"price\": 0,\r",
+							"            \"discountPercentage\": 0,\r",
+							"            \"rating\": 0,\r",
+							"            \"stock\": 0,\r",
+							"            \"brand\": \"\",\r",
+							"            \"category\": \"\",\r",
+							"            \"thumbnail\": \"\",\r",
+							"            \"images\": [\"\", \"\", \"\"]\r",
+							"        },\r",
+							"        // Ajoutez d'autres objets produits ici si nécessaire\r",
+							"    ],\r",
+							"    \"total\": 0,\r",
+							"    \"skip\": 0,\r",
+							"    \"limit\": 0\r",
+							"};\r",
+							"\r",
+							"\r",
+							"    // Convertir le corps de réponse de la requête en JSON\r",
+							"    var responseBody = pm.response.json();\r",
+							"\r",
+							"    // Vérifier que la structure de la réponse correspond à celle de l'exemple de la documentation\r",
+							"    pm.expect(checkStructure(responseBody, expectedResponse)).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "{{Accept}}",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "{{Connection}}",
+						"type": "text"
+					}
+				],
+				"url": "{{BaseURL}}/{{EndPoint_P}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a single product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Mascara\");\r",
+							"});\r",
+							"\r",
+							"// Fonction pour vérifier la structure de l'objet\r",
+							"function checkStructure(obj, template) {\r",
+							"    for (var key in template) {\r",
+							"        if (!(key in obj)) {\r",
+							"            return false;\r",
+							"        }\r",
+							"        if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {\r",
+							"            if (!checkStructure(obj[key], template[key])) {\r",
+							"                return false;\r",
+							"            }\r",
+							"        }\r",
+							"    }\r",
+							"    return true;\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Vérifier que la structure de la réponse est conforme à l'exemple de la documentation\", function () {\r",
+							"    // Définir l'exemple de réponse de la documentation\r",
+							"    var expectedResponse = {\r",
+							"  \"id\": 0,\r",
+							"  \"title\": \"\",\r",
+							"  \"description\": \"\",\r",
+							"  \"category\": \"\",\r",
+							"  \"price\": 0,\r",
+							"  \"discountPercentage\": 0,\r",
+							"  \"rating\": 0,\r",
+							"  \"stock\": 0,\r",
+							"  \"tags\": [],\r",
+							"  \"brand\": \"\",\r",
+							"  \"sku\": \"\",\r",
+							"  \"weight\": 0,\r",
+							"  \"dimensions\": {\r",
+							"    \"width\": 0,\r",
+							"    \"height\": 0,\r",
+							"    \"depth\": 0\r",
+							"  },\r",
+							"  \"warrantyInformation\": \"\",\r",
+							"  \"shippingInformation\": \"\",\r",
+							"  \"availabilityStatus\": \"\",\r",
+							"  \"reviews\": [\r",
+							"    {\r",
+							"      \"rating\": 0,\r",
+							"      \"comment\": \"\",\r",
+							"      \"date\": \"\",\r",
+							"      \"reviewerName\": \"\",\r",
+							"      \"reviewerEmail\": \"\"\r",
+							"    },\r",
+							"    {\r",
+							"      \"rating\": 0,\r",
+							"      \"comment\": \"\",\r",
+							"      \"date\": \"\",\r",
+							"      \"reviewerName\": \"\",\r",
+							"      \"reviewerEmail\": \"\"\r",
+							"    },\r",
+							"    {\r",
+							"      \"rating\": 0,\r",
+							"      \"comment\": \"\",\r",
+							"      \"date\": \"\",\r",
+							"      \"reviewerName\": \"\",\r",
+							"      \"reviewerEmail\": \"\"\r",
+							"    }\r",
+							"  ],\r",
+							"  \"returnPolicy\": \"\",\r",
+							"  \"minimumOrderQuantity\": 0,\r",
+							"  \"meta\": {\r",
+							"    \"createdAt\": \"\",\r",
+							"    \"updatedAt\": \"\",\r",
+							"    \"barcode\": \"\",\r",
+							"    \"qrCode\": \"\"\r",
+							"  },\r",
+							"  \"thumbnail\": \"\",\r",
+							"  \"images\": []\r",
+							"};\r",
+							"\r",
+							"    // Convertir le corps de réponse de la requête en JSON\r",
+							"    var responseBody = pm.response.json();\r",
+							"\r",
+							"    // Vérifier que la structure de la réponse correspond à celle de l'exemple de la documentation\r",
+							"    pm.expect(checkStructure(responseBody, expectedResponse)).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{BaseURL}}/{{EndPoint_P}}/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Search products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/products/search?q=phone",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"products",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "phone"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sort products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/products?sortBy=title&order=asc",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "title"
+						},
+						{
+							"key": "order",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all products categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://dummyjson.com/products/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "Get products category list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://dummyjson.com/products/category-list"
+			},
+			"response": []
+		},
+		{
+			"name": "Get products by a category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://dummyjson.com/products/category/smartphones"
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"title\":\"BMW Pencil\",\r\n\"description\":\"pikhou\",\r\n\"price\":12,\r\n\"stock\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://dummyjson.com/products/add"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"iPhone Galaxy +1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://dummyjson.com/products/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://dummyjson.com/products/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Limit and skip products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.skip).to.eql(10);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.products[2].id).to.eql(13);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dummyjson.com/products?limit=10&skip=10&select=title,price",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "skip",
+							"value": "10"
+						},
+						{
+							"key": "select",
+							"value": "title,price"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "EndPoint_P",
+			"value": "products"
+		}
+	]
+}

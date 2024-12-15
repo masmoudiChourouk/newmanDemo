@@ -1,0 +1,24 @@
+{
+	"id": "8754e3d6-67f9-4974-80b9-02bd4595b825",
+	"values": [
+		{
+			"key": "Connection",
+			"value": "keep-alive",
+			"enabled": true
+		},
+		{
+			"key": "Accept-Encoding",
+			"value": "gzip, deflate, br",
+			"enabled": true
+		},
+		{
+			"key": "Accept",
+			"value": "*/*",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2024-12-15T17:29:21.004Z",
+	"_postman_exported_using": "Postman/11.22.0"
+}
